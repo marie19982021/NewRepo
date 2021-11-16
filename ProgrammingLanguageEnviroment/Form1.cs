@@ -7,25 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace ProgrammingLanguageEnviroment
 {
     public partial class Form1 : Form
     {
-        private Bitmap OutputBitmap = new Bitmap(500, 400); //size of bitmap
-        private Canvass myCanvassInstance; //an instance of Canvass class
-        private Command commandInstance; //an instance of Command class
+        private Bitmap OutputBitmap = new Bitmap(500, 400); //sets the size of bitmap to 500,400
+        private Canvass myCanvassInstance; //an instance of canvass class is declared
+        private Command commandInstance; //an instance of command class is declared
 
 
         public Form1()
         {
             InitializeComponent();
-            myCanvassInstance = new Canvass(Graphics.FromImage(OutputBitmap)); 
+            myCanvassInstance = new Canvass(Graphics.FromImage(OutputBitmap));
             commandInstance = new Command(myCanvassInstance, commandLine);
             myCanvassInstance.SetElementsSizes(OutputBitmap.Width, OutputBitmap.Height, OutputWindow.Width, OutputWindow.Height);
-            //Form1.Controls.Add(OutputWindow);
             OutputWindow.BackColor = Color.White;
-            //OutputWindow.Location = new Point(mainCanvasInstance.xPos - OutputBitmap.Width / 2, mainCanvasInstance.yPos - OutputBitmap.Height / 2);
             OutputWindow.Image = OutputBitmap;
         }
 
@@ -36,8 +35,8 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// Sets up a process method where lines of commands is passed to the object
-        /// The method is called when an event occurs after the program is ran
+        /// once the program starts running - and an event occurs then this 
+        /// method is used to pass commands to the object
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -46,7 +45,7 @@ namespace ProgrammingLanguageEnviroment
             string[] InputStringArray = commandLine.Text.Trim().ToLower().Split(' ');
             String CommandString = InputStringArray[0];
             string[] ParamList = new string[0];
-            if (InputStringArray.Length > 1) //check is there is greater than 1 string
+            if (InputStringArray.Length > 1) //check if there is greater than 1 string
             {
                 ParamList = InputStringArray[1].Split(',');
             }
@@ -57,12 +56,10 @@ namespace ProgrammingLanguageEnviroment
                 commandLine.Text = "";//clears command line
                 OutputWindow.Refresh();
             }
-            //OutputWindow.Location = new Point(mainCanvasInstance.xPos - OutputWindow.Width / 2, mainCanvasInstance.yPos - OutputWindow.Height/ 2);
         }
 
         /// <summary>
-        /// After typing commands into commandLine, the command should be copied and ---
-        /// --- be printed onto this inputWindow
+        /// all commands should be copied and printed onto this window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -86,11 +83,11 @@ namespace ProgrammingLanguageEnviroment
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void outputWindow_Paint(object sender, PaintEventArgs e) 
+        private void outputWindow_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics; 
+            Graphics g = e.Graphics;
             //OutputWindow.Image = OutputBitmap;
-            g.DrawImageUnscaled(OutputBitmap, 0, 0); 
+            g.DrawImageUnscaled(OutputBitmap, 0, 0);
         }
 
         /// <summary>
@@ -102,5 +99,66 @@ namespace ProgrammingLanguageEnviroment
         {
 
         }
+
+
+
+
+
+
+        /// <summary>
+        /// When user clicks on save button ---
+        /// --- a pop window appears which allows them to save their drawing ---
+        /// --- in any folder they wish
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            saveFileDialog1.FileName = "Save Image";
+            saveFileDialog1.Filter = "BMP|*.bmp";
+
+            if (saveFileDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                string savePath = saveFileDialog1.FileName;
+                Bitmap OutputBitmap = new Bitmap(OutputWindow.Image);
+                OutputBitmap.Save(savePath, ImageFormat.Bmp);
+                MessageBox.Show("Image Saved");
+            }
+        }
+
+
+
+        /// <summary>
+        /// This method enables users to load up a file with ---
+        /// --- bmp extension ontot the pictureTextBox screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = "Open Image";
+            dlg.Filter = "bmp files (.bmp)|.Bmp";
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                OutputWindow.Image = Image.FromFile(dlg.FileName);
+            }
+            dlg.Dispose();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+
     }
 }
