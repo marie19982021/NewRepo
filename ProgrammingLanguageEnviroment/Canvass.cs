@@ -10,24 +10,18 @@ namespace ProgrammingLanguageEnviroment
 {
     class Canvass
     {
-
-        /// <summary>
-        /// creating an object g of Graphics
-        /// declaring xPosition and yPosition as an int
-        /// declaring and initializing penSizeX, sizeOfCanvassX and penSizeY,sizeOfCanvassY to 0
-        /// 
-        /// </summary>
-        Graphics g;
-        public Pen drawingPen;
-        public int xPosition, yPosition;
-        public int myPenSizeX = 0, myPenSizeY = 0;
-        int sizeOfCanvassX = 0, sizeOfCanvassY = 0;
+        Graphics g; //declaring an instance g
+        public Pen drawingPen; //declaring an instance drawingPen
+        public int xPosition, yPosition; //declare a type integer for xPosition and yPosition
+        public int myPenSizeX = 0, myPenSizeY = 0; //penSize is declared and initialised to 0
+        int sizeOfCanvassX = 0, sizeOfCanvassY = 0; //sizeOfCanvass is declared and initialised to 0
 
         /// <summary>
         /// constructor
-        /// this.g is set g
-        /// drawingPen is set to new pen with color black and level of pen thickness is set to 3
-        /// MoveTo method is set to (0,0) position
+        /// param "g" is set to this.g
+        /// xPosition and yPosition is initiliased to 0
+        /// drawingPen is given the value of a new pen with black colour and thickness of 3 
+        /// moveto method is co-ordinated to initial position
         /// </summary>
         /// <param name="g"></param>
         public Canvass(Graphics g)
@@ -39,7 +33,8 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// the initial sizes for the canvas and pensize within the X and Y coordinates
+        /// this method sets the element sizes for ---
+        /// --- X/Y position of canvass and pen size
         /// </summary>
         /// <param name="myNewCanvasSizeX"></param>
         /// <param name="myNewCanvasSizeY"></param>
@@ -54,7 +49,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// The initial X and Y drawing position is set to a new target co-ordinates
+        /// The x and y position is set to the new target position
         /// </summary>
         /// <param name="targetLocationX"></param>
         /// <param name="targetLocationY"></param>
@@ -65,7 +60,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// The DrawTo method moves the pen's drawing location to a new target location
+        /// the new drawline position is set 
         /// </summary>
         /// <param name="targetLocationX"></param>
         /// <param name="targetLocationY"></param>
@@ -77,7 +72,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// draws a square shape
+        /// sets the position of a square and draws
         /// </summary>
         /// <param name="width"></param>
         public void DrawSquare(int width)
@@ -86,7 +81,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// draws a rectangle shape
+        /// sets the position of a rectangle and draws
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
@@ -96,7 +91,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// draws a trangle shape
+        /// sets the position of a triangle and draws
         /// </summary>
         /// <param name="pointsToDraw"></param>
         public void DrawTriangle(PointF[] pointsToDraw)
@@ -105,7 +100,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// draws a circle shape
+        /// sets the position of a circle and draws
         /// </summary>
         /// <param name="radius"></param>
         public void DrawCircle(float radius)
@@ -114,7 +109,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// ClearDrawing() nethod clears any drawing in the picture box by coloring it white
+        /// clears drawing by cover it with a white colour
         /// </summary>
         public void ClearDrawing()
         {
@@ -122,14 +117,12 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// Resets the position of the pen by moving the pen to (50,50) location
+        /// resets the postion of x and y and moves it to (50,50) co-ordination
         /// </summary>
         public void ResetPenPosition()
         {
             MoveTo(50, 50);
         }
-
-
 
     }
 }
