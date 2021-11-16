@@ -10,11 +10,11 @@ namespace ProgrammingLanguageEnviroment
 {
     class Command
     {
-        private Canvass myCanvassInstance; //an instance of Canvass class
-        private RichTextBox commandLine; //an instance of RichTextBox
+        private Canvass myCanvassInstance; //declaring an instance of canvass class
+        private RichTextBox commandLine; //declaring an instance of RichTextBox
 
         /// <summary>
-        /// Set up my instances
+        /// constructor for the command class
         /// </summary>
         /// <param name="myCanvasInstance"></param>
         /// <param name="CommandLine"></param>
@@ -25,8 +25,8 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// A switch statement used within the ProcessCommand() method ---
-        /// --- to act upon user's command in the command line.
+        /// A switch statement within the processCommand method to
+        /// process what the user will type
         /// </summary>
         /// <param name="CommandString"></param>
         /// <param name="ParamList"></param>
@@ -62,7 +62,7 @@ namespace ProgrammingLanguageEnviroment
                     ResetPenPosition();
                     break;
                 default: //if command is invalid then show this error message!
-                    MessageBox.Show(CommandString + " Due to an invalid command entered. Try again.");
+                    MessageBox.Show(CommandString + "invalid command. Try again.");
                     break;
             }
         }
@@ -76,34 +76,31 @@ namespace ProgrammingLanguageEnviroment
             if (ParamList.Length == 2)
             {
                 int x, y = 0;
-
                 try
                 {
                     x = Int32.Parse(ParamList[0]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[0] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
-
                 try
                 {
                     y = Int32.Parse(ParamList[1]);
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[1] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
-
                 myCanvassInstance.DrawTo(x, y);
             }
             else
             {
-                MessageBox.Show("Please use the write format for drawTo such as: 100,200");
+                MessageBox.Show("The right format for drawto is: 100,200");
                 commandLine.Text = "";
             }
         }
@@ -124,7 +121,7 @@ namespace ProgrammingLanguageEnviroment
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[0] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
@@ -135,7 +132,7 @@ namespace ProgrammingLanguageEnviroment
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[1] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
@@ -144,7 +141,7 @@ namespace ProgrammingLanguageEnviroment
             }
             else
             {
-                MessageBox.Show("Please use the write format for moveTo such as: 100,200");
+                MessageBox.Show("The right format for moveTo is: 100,200");
                 commandLine.Text = "";
             }
         }
@@ -165,7 +162,7 @@ namespace ProgrammingLanguageEnviroment
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[0] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
@@ -176,7 +173,7 @@ namespace ProgrammingLanguageEnviroment
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[1] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[1] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
@@ -185,7 +182,7 @@ namespace ProgrammingLanguageEnviroment
             }
             else
             {
-                MessageBox.Show("Please use the write format for rectangle shape such as: 100,200");
+                MessageBox.Show("The right format for the rectangle shape is: 100,200");
                 commandLine.Text = "";
             }
         }
@@ -207,7 +204,7 @@ namespace ProgrammingLanguageEnviroment
                 }
                 catch (FormatException)
                 {
-                    MessageBox.Show("Unable to parse parameter " + ParamList[0] + " as an int.");
+                    MessageBox.Show("Not able to parse parameter " + ParamList[0] + " as an integer.");
                     commandLine.Text = "";
                     return;
                 }
@@ -216,13 +213,13 @@ namespace ProgrammingLanguageEnviroment
             }
             else
             {
-                MessageBox.Show("Please use the write format for circle such as: 10");
+                MessageBox.Show("The right format for shape circle is: 10");
                 commandLine.Text = "";
             }
         }
 
         /// <summary>
-        /// 3 new instances for the 3 sides of triangle 
+        /// instance point1, point2, point3 for all three sides of triangle 
         /// </summary>
         private void DrawTriangle()
         {
@@ -240,8 +237,8 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// allow user to change colour of the pen ---
-        /// --- to either black, blue or red
+        /// a switch statement used to let user choose one of 4 colours 
+        /// mentioned in the statement and allows the user to draw in that colour
         /// </summary>
         /// <param name="ParamList"></param>
         private void ChangePenColour(string[] ParamList)
@@ -254,17 +251,20 @@ namespace ProgrammingLanguageEnviroment
                     case "black":
                         myCanvassInstance.drawingPen.Color = Color.Black;
                         break;
-                    case "blue":
-                        myCanvassInstance.drawingPen.Color = Color.Blue;
+                    case "green":
+                        myCanvassInstance.drawingPen.Color = Color.Green;
                         break;
-                    case "red":
-                        myCanvassInstance.drawingPen.Color = Color.Red;
+                    case "pink":
+                        myCanvassInstance.drawingPen.Color = Color.Pink;
+                        break;
+                    case "purple":
+                        myCanvassInstance.drawingPen.Color = Color.Purple;
                         break;
                 }
             }
             else
             {
-                MessageBox.Show("please use the right format for circle 100");
+                MessageBox.Show("use right format for cicle such as: 10, 15, 50");
                 commandLine.Text = "";
             }
         }
