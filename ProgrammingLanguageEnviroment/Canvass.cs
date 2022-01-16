@@ -36,7 +36,7 @@ namespace ProgrammingLanguageEnviroment
             xPosition = yPosition = 0;
             drawingPen = new Pen(Color.Black, 3);
             this.pictureBox = pictureBox; //pictureBox set to pictureBox - part 2
-            brush = new SolidBrush(Color.Transparent); //brush instance set to transparent color - part 1
+            brush = new SolidBrush(Color.Transparent); //brush instance set to transparent color - part 1.
             flashing = true; //flashing set to true - part 2
             MoveTo(0, 0);
         }
