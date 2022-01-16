@@ -19,7 +19,7 @@ namespace ProgrammingLanguageEnviroment
         public SolidBrush brush; //brush instance declared - part 1
         public bool fill = false; // fill instance set to false - part 1
         PictureBox pictureBox; //pictureBox instance declared - part 2
-        public bool flashing, flashingSetBW, flashingSetBY, flashingSetRG; //declared instances for flash method - part 2
+        public bool flashing, flashingSetBW, flashingSetBY, flashingSetRG; //declared instances for flash method - part 2 ..
 
         /// <summary>
         /// constructor
