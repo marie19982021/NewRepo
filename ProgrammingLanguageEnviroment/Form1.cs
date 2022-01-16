@@ -21,7 +21,7 @@ namespace ProgrammingLanguageEnviroment
         public Form1()
         {
             InitializeComponent();
-            myCanvassInstance = new Canvass(Graphics.FromImage(OutputBitmap));
+            myCanvassInstance = new Canvass(Graphics.FromImage(OutputBitmap), OutputWindow);
             commandInstance = new Command(myCanvassInstance, commandLine);
             myCanvassInstance.SetElementsSizes(OutputBitmap.Width, OutputBitmap.Height, OutputWindow.Width, OutputWindow.Height);
             OutputWindow.BackColor = Color.White;
@@ -102,9 +102,6 @@ namespace ProgrammingLanguageEnviroment
 
 
 
-
-
-
         /// <summary>
         /// When user clicks on save button ---
         /// --- a pop window appears which allows them to save their drawing ---
@@ -168,6 +165,9 @@ namespace ProgrammingLanguageEnviroment
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

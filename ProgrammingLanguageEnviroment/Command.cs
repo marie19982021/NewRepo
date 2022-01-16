@@ -55,11 +55,29 @@ namespace ProgrammingLanguageEnviroment
                 case "clear": //allows user clear whatever is on the pictureBox window
                     myCanvassInstance.ClearDrawing();
                     break;
-                case "pencolour": //allows user to choose a pen colour of their choice
-                    ChangePenColour(ParamList);
-                    break;
                 case "reset": //allows user to reset the output window and resets the pen position
                     ResetPenPosition();
+                    break;
+                case "redgreen": //shape flashes red/green color - part 2
+                    FlashingColorRG();
+                    break;
+                case "blueyellow": //shape flashes blue/yellow color - part 2
+                    FlashingColorBY();
+                    break;
+                case "blackwhite": //shape flashes black/white color - part 2
+                    FlashingColorBW();
+                    break;
+                case "fill": //fill shape with color - part 1
+                    FillShape(ParamList);
+                    break;
+                case "redpen": //changes pen color to red - part 1
+                    myCanvassInstance.drawingPen.Color = Color.Red;
+                    break;
+                case "bluepen": //changes pen color to blue - part 1
+                    myCanvassInstance.drawingPen.Color = Color.Blue;
+                    break;
+                case "blackpen": //changes pen color to black - part 1
+                    myCanvassInstance.drawingPen.Color = Color.Black;
                     break;
                 default: //if command is invalid then show this error message!
                     MessageBox.Show(CommandString + "invalid command. Try again.");
@@ -263,11 +281,78 @@ namespace ProgrammingLanguageEnviroment
                 }
             }
             else
-            {
-                MessageBox.Show("use right format for cicle such as: 10, 15, 50");
+            {   //this runs if above not executed
+                MessageBox.Show("use right format for cicle such as: 10, 15, 50"); 
                 commandLine.Text = "";
             }
         }
+
+
+        /// <summary>
+        /// flashingSetRG initialised to true and called when excuted - part 2
+        /// </summary>
+        private void FlashingColorRG()
+        {
+            myCanvassInstance.flashingSetRG = true;
+        }
+
+        /// <summary>
+        /// flashingSetRG initialised to true and called when excuted - part 2
+        /// </summary>
+        private void FlashingColorBY()
+        {
+            myCanvassInstance.flashingSetBY = true;
+        }
+
+        /// <summary>
+        /// flashingSetRG initialised to true and called when excuted - part 2
+        /// </summary>
+        private void FlashingColorBW()
+        {
+            myCanvassInstance.flashingSetBW = true;
+        }
+
+
+        /// <summary>
+        /// FillShape method called when users want to fill a shape
+        /// with color of their chice - part 2
+        /// </summary>
+        /// <param name="ParamList"></param>
+        private void FillShape(string[] ParamList)
+        {
+            myCanvassInstance.FillShape();
+            if(ParamList.Length ==1)
+            {
+                string c = ParamList[0];
+                 switch(c)
+                {
+                    case "black":
+                        myCanvassInstance.brush.Color = Color.Black;
+                        break;
+                    case "green":
+                        myCanvassInstance.brush.Color = Color.Green;
+                        break;
+                    case "purple":
+                        myCanvassInstance.brush.Color = Color.Purple;
+                        break;
+                    case "pink":
+                        myCanvassInstance.brush.Color = Color.Pink;
+                        break;
+                    case "white":
+                        myCanvassInstance.brush.Color = Color.White;
+                        break;
+                }
+                 
+            }
+            else
+            {
+                MessageBox.Show("Please use the right format");
+                commandLine.Text = "";
+            }
+        }
+
+
+
 
         /// <summary>
         /// resets the position of the pen to (0,0)
