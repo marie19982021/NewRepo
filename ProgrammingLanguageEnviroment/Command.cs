@@ -289,7 +289,7 @@ namespace ProgrammingLanguageEnviroment
 
 
         /// <summary>
-        /// flashingSetRG initialised to true and called when excuted - part 2
+        /// flashingSetRG initialised to true and called when excuted - part 2.
         /// </summary>
         private void FlashingColorRG()
         {
