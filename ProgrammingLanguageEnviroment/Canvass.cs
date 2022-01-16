@@ -126,7 +126,7 @@ namespace ProgrammingLanguageEnviroment
         }
 
         /// <summary>
-        /// this thread flashes the line - part 2
+        /// this thread flashes the line - part 2..
         /// </summary>
         /// <param name="targetLocationX"></param>
         /// <param name="targetLocationY"></param>
