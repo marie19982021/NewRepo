@@ -380,7 +380,7 @@ namespace ProgrammingLanguageEnviroment
 
 
         /// <summary>
-        /// methods to flash colour dippending on the combination of the colors - part 2
+        /// methods to flash colour dippending on the combination of the colors - part 2.
         /// </summary>
         /// <param name="radius"></param>
         public void DrawCircle(float radius)
